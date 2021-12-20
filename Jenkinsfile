@@ -188,9 +188,9 @@ def setPluginsPom(String pathPom){
 node  {
 
 // Recuperacion de configuracion
-  stage('Run Jenkinsfiles Pedro') {    
+  stage('Run Jenkinsfiles') {    
     script {
-			echo "!!!!!!!!!!!!!!!!!!!!!!COMIENZA!!!!!!!!!!!!!!!!!!!!!!!!!"
+	
 			valorInfo = 'java 3.1.0 - Fecha Creación: 15/06/2021 - Fecha Modificación: 18/10/2021'
 			textoInfo = 'Información acerca del pipeline'
 			textoUrlGit = 'URL del repositorio GIT en el que se encuentra el código a usar'
@@ -212,7 +212,6 @@ node  {
 			textoAfterBuild = 'Paso posterior a la compilación. Ejecutar línea de comandos (shell)'
 			textoBuild = 'Ejecutar línea de comandos (shell)'
 
-			//
 			apiUrl = "${JENKINS_URL}job/Administracion/job/configuracion/api/json"
 			pathJob = "${JENKINS_HOME}/"
 			"${JOB_NAME}".split('/').each {
@@ -555,7 +554,8 @@ node  {
 				)
 			} 
 
-//Borrado de workspace
+//Borrado de worskspace
+
 	stage ('Clean WORKSPACE') {
 
 		script {
@@ -568,6 +568,7 @@ node  {
 	}
 
 //Descaga del codigo del repositorio
+
 	stage('Download') {
         
 		git branch: "${params.branch}", url: "${params.urlgit}", credentialsId: 'gitlab-token'
@@ -576,6 +577,7 @@ node  {
 	}
 
 //Preparacion de las instrucciones maven a ejecutar segun la eleccion de parametros
+
 	stage('Configuration'){
 	
 		script {
@@ -680,6 +682,7 @@ node  {
 	}
 
 //Ejecucion de tareas antes
+
 	stage('Task Before Build') {
 	
 		script {
@@ -691,6 +694,7 @@ node  {
 	}
 
 //Compilacion
+
 	stage('Compile') {
 
 		script {
@@ -703,6 +707,7 @@ node  {
 	}
 
 //Despliegue de compilado
+
 	stage('Deploy') {
 
 		script {
@@ -740,6 +745,7 @@ node  {
 	}
 
 //Ejecucion del sonar scanner
+
 	stage('SonarQube') {
 
 		script {
@@ -755,6 +761,7 @@ node  {
 	}
 
 //Persistencia de librerias usadas en el compilado
+
 	stage('Library Persistence') {
 	
 		script {
@@ -772,6 +779,7 @@ node  {
 	}
 
 //Ejecucion de tareas despues
+
 	stage('Task After Build') {
 
 		script {
@@ -783,6 +791,7 @@ node  {
 	}
 
 //Sobreescribir la configuracion por defecto
+
 	stage("Write Configuration") {
 	
 		script {
@@ -794,6 +803,7 @@ node  {
 	}
 
 //Autorefresco de la propia tarea para coger los cambios de configuracion
+
 	stage ("Refresh Configuration") {
 	
 		script {
