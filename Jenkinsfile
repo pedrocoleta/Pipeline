@@ -188,9 +188,9 @@ def setPluginsPom(String pathPom){
 node  {
 
 // Recuperacion de configuracion
-  stage('Run Jenkinsfiles') {    
+  stage('Run Jenkinsfiles Pedro') {    
     script {
-	
+			echo "!!!!!!!!!!!!!!!!!!!!!!COMIENZA!!!!!!!!!!!!!!!!!!!!!!!!!"
 			valorInfo = 'java 3.1.0 - Fecha Creación: 15/06/2021 - Fecha Modificación: 18/10/2021'
 			textoInfo = 'Información acerca del pipeline'
 			textoUrlGit = 'URL del repositorio GIT en el que se encuentra el código a usar'
